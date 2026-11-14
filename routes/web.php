@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -15,6 +16,18 @@ Route::middleware('auth')->group(function () {
     Route::get('/', function () {
         return view('index');
     });
+
+    Route::get('/createemployee', function () {
+        return view('Employees.create');
+    });
+
+    Route::post('addemployee', [EmployeeController::class, "create"]);
+
+    Route::get('/employees', function () {
+        return view('Employees.read');
+    });
+
+
 });
 
 require __DIR__ . '/auth.php';
